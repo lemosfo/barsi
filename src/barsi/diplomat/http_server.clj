@@ -5,9 +5,7 @@
 
 (defn ping [_]
   {:status 200
-   :body
-   (str "Pong")
-   })
+   :body   (str "Pong")})
 
 (defn create-item [_]
   {:status 200
@@ -17,7 +15,7 @@
   [])
 
 (def routes
-  ;  (route/expand-routes
+  ; (route/expand-routes
   #{["/api/ping"
      :get
      ping
@@ -26,8 +24,7 @@
     ["/api/create-item"
      :get
      create-item
-     :route-name :create-item]
-    })
+     :route-name :create-item]})
 
 (def service-map {:env          :prod
                   ::http/routes routes
@@ -40,6 +37,8 @@
 ;(defn start-service []
 ;  (http/start (http/create-server service-map)))
 
+;(start-service)
+
 ;(defn start-service []
 ;  (http/start (http/create-server service-map)))
 
@@ -47,7 +46,7 @@
 ;;Test Request
 
 ;(defonce server (atom nil))
-
+;
 ;(defn start-server []
 ;  (reset! server (http/start (http/create-server service-map))))
 ;
@@ -59,10 +58,10 @@
 ;  (start-server))
 ;
 ;(defn test-request [verb url]
-;  (test/response-for (::http/service-fn @server) verb url))
+;(test/response-for (::http/service-fn @server) verb url))
 ;
 ;(start-server)
 ;;(stop-server)
-;;(reset-server)
+;(reset-server)
 ;(test-request :get "/api/ping")
-;(test-request :get "/api/blocking-task")
+;(test-request :get "/api/create-item")

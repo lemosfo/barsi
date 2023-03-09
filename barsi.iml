@@ -20,7 +20,6 @@
     <orderEntry type="library" name="Leiningen: ch.qos.logback/logback-classic:1.2.10" level="project" />
     <orderEntry type="library" name="Leiningen: ch.qos.logback/logback-core:1.2.10" level="project" />
     <orderEntry type="library" name="Leiningen: cheshire:5.9.0" level="project" />
-    <orderEntry type="library" name="Leiningen: clj-commons/iapetos:0.1.13" level="project" />
     <orderEntry type="library" name="Leiningen: clj-tuple:0.2.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.cognitect/transit-clj:0.8.313" level="project" />
     <orderEntry type="library" name="Leiningen: com.cognitect/transit-java:0.8.337" level="project" />
@@ -45,12 +44,6 @@
     <orderEntry type="library" name="Leiningen: io.pedestal/pedestal.route:0.5.10" level="project" />
     <orderEntry type="library" name="Leiningen: io.pedestal/pedestal.service-tools:0.5.11-beta-1" level="project" />
     <orderEntry type="library" name="Leiningen: io.pedestal/pedestal.service:0.5.10" level="project" />
-    <orderEntry type="library" name="Leiningen: io.prometheus/simpleclient:0.12.0" level="project" />
-    <orderEntry type="library" name="Leiningen: io.prometheus/simpleclient_common:0.12.0" level="project" />
-    <orderEntry type="library" name="Leiningen: io.prometheus/simpleclient_pushgateway:0.12.0" level="project" />
-    <orderEntry type="library" name="Leiningen: io.prometheus/simpleclient_tracer_common:0.12.0" level="project" />
-    <orderEntry type="library" name="Leiningen: io.prometheus/simpleclient_tracer_otel:0.12.0" level="project" />
-    <orderEntry type="library" name="Leiningen: io.prometheus/simpleclient_tracer_otel_agent:0.12.0" level="project" />
     <orderEntry type="library" name="Leiningen: io.undertow/undertow-core:1.4.14.Final" level="project" />
     <orderEntry type="library" name="Leiningen: io.undertow/undertow-servlet:1.4.14.Final" level="project" />
     <orderEntry type="library" name="Leiningen: io.undertow/undertow-websockets-jsr:1.4.14.Final" level="project" />
