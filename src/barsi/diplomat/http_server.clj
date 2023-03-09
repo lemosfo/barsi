@@ -1,8 +1,7 @@
 (ns barsi.diplomat.http-server
   (:require [io.pedestal.http :as http]
             [io.pedestal.http.route :as route]
-            [io.pedestal.test :as test])
-  (:use [clojure.pprint]))
+            [io.pedestal.test :as test]))
 
 (defn ping [_]
   {:status 200
@@ -10,8 +9,7 @@
    (str "Pong")
    })
 
-(defn create-item
-  [_]
+(defn create-item [_]
   {:status 200
    :body   {:text (str "item-1")}})
 
@@ -27,10 +25,9 @@
 
     ["/api/create-item"
      :get
-     blocking-task
+     create-item
      :route-name :create-item]
     })
-;)
 
 (def service-map {:env          :prod
                   ::http/routes routes
@@ -45,7 +42,6 @@
 
 ;(defn start-service []
 ;  (http/start (http/create-server service-map)))
-
 
 ;----------------------------------------------------------------------------------------------------------------------
 ;;Test Request

@@ -11,5 +11,5 @@
                  [clj-commons/iapetos "0.1.13"]]
   :profiles {:dev     {:dependencies [[io.pedestal/pedestal.service-tools "0.5.11-beta-1"]
                                       [io.pedestal/pedestal.jetty "0.5.10"]]}
-             :uberjar {:aot [tio-patinhas.server]}}
-  :repl-options {:init-ns tio-patinhas.core})
+             :uberjar {:aot [barsi.server]}}
+  :repl-options {:init-ns barsi.core})
