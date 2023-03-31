@@ -1,17 +1,13 @@
 (ns barsi.diplomat.http-server
   (:require [io.pedestal.http :as http]
             [io.pedestal.http.route :as route]
-            [io.pedestal.test :as test])
-  (:use [clojure.pprint]))
+            [io.pedestal.test :as test]))
 
 (defn ping [_]
   {:status 200
-   :body
-   (str "Pong")
-   })
+   :body   (str "Pong")})
 
-(defn create-item
-  [_]
+(defn create-item [_]
   {:status 200
    :body   {:text (str "item-1")}})
 
@@ -19,7 +15,7 @@
   [])
 
 (def routes
-  ;  (route/expand-routes
+  ; (route/expand-routes
   #{["/api/ping"
      :get
      ping
@@ -27,10 +23,8 @@
 
     ["/api/create-item"
      :get
-     blocking-task
-     :route-name :create-item]
-    })
-;)
+     create-item
+     :route-name :create-item]})
 
 (def service-map {:env          :prod
                   ::http/routes routes
@@ -43,15 +37,16 @@
 ;(defn start-service []
 ;  (http/start (http/create-server service-map)))
 
+;(start-service)
+
 ;(defn start-service []
 ;  (http/start (http/create-server service-map)))
-
 
 ;----------------------------------------------------------------------------------------------------------------------
 ;;Test Request
 
 ;(defonce server (atom nil))
-
+;
 ;(defn start-server []
 ;  (reset! server (http/start (http/create-server service-map))))
 ;
@@ -63,10 +58,10 @@
 ;  (start-server))
 ;
 ;(defn test-request [verb url]
-;  (test/response-for (::http/service-fn @server) verb url))
+;(test/response-for (::http/service-fn @server) verb url))
 ;
 ;(start-server)
 ;;(stop-server)
-;;(reset-server)
+;(reset-server)
 ;(test-request :get "/api/ping")
-;(test-request :get "/api/blocking-task")
+;(test-request :get "/api/create-item")
