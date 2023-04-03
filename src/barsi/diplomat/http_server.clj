@@ -1,6 +1,6 @@
 (ns barsi.diplomat.http-server
   (:require [io.pedestal.http :as http]
-            [io.pedestal.http.route :as route]
+            [barsi.logic.financial-calculates :as financial-calculates]
             [io.pedestal.test :as test]))
 
 (defn ping [_]
@@ -8,8 +8,9 @@
    :body   (str "Pong")})
 
 (defn create-item [_]
-  {:status 200
-   :body   {:text (str "item-1")}})
+  (let [output {:test 25}]
+    {:status 200
+     :body   (str output)}))
 
 (def common-interceptors
   [])
