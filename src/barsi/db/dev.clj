@@ -1,6 +1,10 @@
-(ns barsi.db.dev)
+(ns barsi.db.dev
+  (:require [clojure.pprint :refer [pprint]]))
 
 (def base (atom []))
+
+(defn insert-in-db [db function request]
+  (swap! db function request))
 
 (def db-interceptor
   {:name ::database-interceptor
