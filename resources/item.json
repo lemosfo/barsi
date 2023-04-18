@@ -1,0 +1,12 @@
+{
+  "item": "Exemplo de item",
+  "type": "Alimentação",
+  "total-amount": 50.0,
+  "installments": 1,
+  "input-date": "2022-04-08",
+  "due-date": "2022-04-08",
+  "description": "Exemplo de descrição",
+  "category-flags": ["Categoria1", "Categoria2", "Categoria3"],
+  "group-flags": "Grupo",
+  "status": "Pago"
+}

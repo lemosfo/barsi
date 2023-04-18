@@ -7,7 +7,8 @@
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [io.pedestal/pedestal.service "0.5.10"]
                  [io.pedestal/pedestal.immutant "0.5.10"]
-                 [org.slf4j/slf4j-simple "2.0.3"]]
+                 [org.slf4j/slf4j-simple "2.0.3"]
+                 [cheshire "5.11.0"]]
   :main ^{:skip-aot false} barsi.server
   :profiles {:dev     {:dependencies [[io.pedestal/pedestal.service-tools "0.5.11-beta-1"]
                                       [io.pedestal/pedestal.jetty "0.5.10"]]}

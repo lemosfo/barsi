@@ -1,16 +1,19 @@
 (ns barsi.diplomat.http-server
   (:require [io.pedestal.http :as http]
             [barsi.logic.financial-calculates :as financial-calculates]
-            [io.pedestal.test :as test]))
+            [io.pedestal.test :as test]
+            [barsi.db.dev :as db.dev]
+            [barsi.helpers :as helpers]))
 
-(defn ping [_]
+(defn- ping [_]
   {:status 200
    :body   (str "Pong")})
 
-(defn create-item [_]
-  (let [output {:test 25}]
+(defn- create-item [req]
+  (let [body (-> req)]
+    (db.dev/insert-in-db db.dev/base conj body)
     {:status 200
-     :body   (str output)}))
+     :body   @db.dev/base}))
 
 (def common-interceptors
   [])
@@ -23,7 +26,7 @@
      :route-name :ping]
 
     ["/api/create-item"
-     :get
+     :post
      create-item
      :route-name :create-item]})
 
