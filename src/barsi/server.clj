@@ -9,9 +9,11 @@
 ;; From the REPL you can call server/start and server/stop on this service
 (defonce runnable-service (server/create-server http-server/service-map))
 
+;; This is some functions to start a server inside an atom to help debug process
 (defonce server (atom nil))
 
 (defn start-server []
+  (println "\nCreating your server in debugging mode ...")
   (reset! server (server/start (server/create-server http-server/service-map))))
 
 (defn stop-server []
@@ -29,7 +31,7 @@
   "The entry-point for 'lein run-dev'"
   [& args]
   (println "\nCreating your [DEV] server...")
-  (-> http-server/service-map                               ;; start with production configuration
+  (-> http-server/service-map
       (merge {:env                     :dev
               ;; do not block thread that starts web server
               ::server/join?           false

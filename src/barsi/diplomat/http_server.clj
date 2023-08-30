@@ -10,9 +10,13 @@
    :body   (str "Pong")})
 
 (defn- list-items [_]
-    ;(db.dev/insert-in-db db.dev/base conj body)
-    {:status 200
-     :body   (str "items-update")})
+  ;(db.dev/insert-in-db db.dev/base conj body)
+  {:status 200
+   :body   (str "items-update")})
+
+(defn- create-item [_]
+  {:status 201
+   :body   (str "create-item")})
 
 (def common-interceptors
   [])
@@ -27,6 +31,11 @@
     ["/api/list-items"
      :get
      list-items
+     :route-name :list-item]
+
+    ["/api/create-item"
+     :post
+     create-item
      :route-name :create-item]})
 
 (def service-map {:env          :prod
