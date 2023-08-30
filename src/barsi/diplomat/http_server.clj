@@ -12,7 +12,7 @@
 (defn- list-items [_]
     ;(db.dev/insert-in-db db.dev/base conj body)
     {:status 200
-     :body   (str (db.dev/db-test))})
+     :body   (str "items-update")})
 
 (def common-interceptors
   [])
@@ -35,36 +35,3 @@
                   ::http/port   8080
                   ::http/type   :jetty
                   ::http/join?  false})
-
-;Old format to start server
-;(defn start-service []
-;  (http/start (http/create-server service-map)))
-
-;(start-service)
-
-;(defn start-service []
-;  (http/start (http/create-server service-map)))
-
-;----------------------------------------------------------------------------------------------------------------------
-;;Test Request
-
-;(defonce server (atom nil))
-;
-;(defn start-server []
-;  (reset! server (http/start (http/create-server service-map))))
-;
-;(defn stop-server []
-;  (http/stop @server))
-;
-;(defn reset-server []
-;  (stop-server)
-;  (start-server))
-;
-;(defn test-request [verb url]
-;(test/response-for (::http/service-fn @server) verb url))
-;
-;(start-server)
-;;(stop-server)
-;(reset-server)
-;(test-request :get "/api/ping")
-;(test-request :get "/api/create-item")

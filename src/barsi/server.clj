@@ -1,12 +1,29 @@
 (ns barsi.server
   (:gen-class)
-  (:require [io.pedestal.http :as server]
+  (:require [io.pedestal.http :as http]
+            [io.pedestal.http :as server]
             [io.pedestal.http.route :as route]
             [barsi.diplomat.http-server :as http-server]))
 
 ;; This is an adapted service map, that can be started and stopped
 ;; From the REPL you can call server/start and server/stop on this service
 (defonce runnable-service (server/create-server http-server/service-map))
+
+(defonce server (atom nil))
+
+(defn start-server []
+  (reset! server (server/start (server/create-server http-server/service-map))))
+
+(defn stop-server []
+  (server/stop @server))
+
+(defn reset-server []
+  (stop-server)
+  (start-server))
+
+(defn reset-server []
+  (stop-server)
+  (start-server))
 
 (defn run-dev
   "The entry-point for 'lein run-dev'"
