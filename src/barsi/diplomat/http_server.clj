@@ -9,11 +9,10 @@
   {:status 200
    :body   (str "Pong")})
 
-(defn- create-item [req]
-  (let [body (-> req)]
-    (db.dev/insert-in-db db.dev/base conj body)
+(defn- list-items [_]
+    ;(db.dev/insert-in-db db.dev/base conj body)
     {:status 200
-     :body   @db.dev/base}))
+     :body   (str (db.dev/db-test))})
 
 (def common-interceptors
   [])
@@ -25,9 +24,9 @@
      ping
      :route-name :ping]
 
-    ["/api/create-item"
-     :post
-     create-item
+    ["/api/list-items"
+     :get
+     list-items
      :route-name :create-item]})
 
 (def service-map {:env          :prod

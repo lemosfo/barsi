@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9f3d3571-eda7-413b-a1b1-bbe053d17c28" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Clojure Namespace" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NkH0YD7EQ02tOq0ucuijaSqCJ6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "cursive.last.file.extension./home/fernando/git/barsi/src": "clj",
+    "last_opened_file_path": "/home/fernando/git/authorizer",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+  }
+}]]></component>
+  <component name="ReplState" timestamp="1681776469925">{:repl-history {:ide [], :local [{:command &quot;(ns barsi.db.dev)&quot;, :offset 17, :ns &quot;barsi.core&quot;} {:command &quot;(prinln base)&quot;, :offset 13, :ns &quot;barsi.db.dev&quot;} {:command &quot;(assoc {:test 25} base)&quot;, :offset 23, :ns &quot;barsi.db.dev&quot;} {:command &quot;(conj base :test 25)&quot;, :offset 20, :ns &quot;barsi.db.dev&quot;} {:command &quot;(def base (atom {}))&quot;, :offset 20, :ns &quot;barsi.db.dev&quot;} {:command &quot;(assoc base :test 25)&quot;, :offset 21, :ns &quot;barsi.db.dev&quot;} {:command &quot;(assoc base {:test 25})&quot;, :offset 23, :ns &quot;barsi.db.dev&quot;} {:command &quot;(conj base {:test 25})&quot;, :offset 22, :ns &quot;barsi.db.dev&quot;} {:command &quot;(conj base 1)&quot;, :offset 13, :ns &quot;barsi.db.dev&quot;} {:command &quot;(def base (atom 0))&quot;, :offset 19, :ns &quot;barsi.db.dev&quot;} {:command &quot;(reset! atom 35)&quot;, :offset 16, :ns &quot;barsi.db.dev&quot;} {:command &quot;(reset! basse 35)&quot;, :offset 17, :ns &quot;barsi.db.dev&quot;} {:command &quot;(ns barsi.diplomat.http-server\n  (:require [io.pedestal.http :as http]\n            [io.pedestal.http.route :as route]\n            [barsi.logic.financial-calculates :as financial-calculates]\n            [io.pedestal.test :as test]))&quot;, :offset 231, :ns &quot;barsi.core&quot;} {:command &quot;bases&quot;, :offset 5, :ns &quot;barsi.core&quot;} {:command &quot;(base)&quot;, :offset 6, :ns &quot;barsi.core&quot;} {:command &quot;(println base)&quot;, :offset 14, :ns &quot;barsi.core&quot;} {:command &quot;(use pprint)&quot;, :offset 12, :ns &quot;barsi.core&quot;} {:command &quot;(use 'pprint)&quot;, :offset 13, :ns &quot;barsi.core&quot;} {:command &quot;(defn insert-in-db [function request]\n  (swap! function request))&quot;, :offset 65, :ns &quot;barsi.db.dev&quot;} {:command &quot;(insert-in-db conj {:test \&quot;testado\&quot;})&quot;, :offset 37, :ns &quot;barsi.db.dev&quot;} {:command &quot;(defn insert-in-db [function request db]\n  (swap! @db function request))&quot;, :offset 72, :ns &quot;barsi.db.dev&quot;} {:command &quot;(insert-in-db base conj {:test \&quot;testado\&quot;})&quot;, :offset 42, :ns &quot;barsi.db.dev&quot;} {:command &quot;(defn insert-in-db [function request db]\n  (swap! db function request))&quot;, :offset 71, :ns &quot;barsi.db.dev&quot;} {:command &quot;(insert-in-db @base conj :test)&quot;, :offset 31, :ns &quot;barsi.db.dev&quot;} {:command &quot;(defn insert-in-db [db function request]\n  (swap! db function request))&quot;, :offset 71, :ns &quot;barsi.db.dev&quot;} {:command &quot;(insert-in-db base conj :test)&quot;, :offset 30, :ns &quot;barsi.db.dev&quot;} {:command &quot;(insert-in-db base conj \&quot;teste\&quot;)&quot;, :offset 32, :ns &quot;barsi.db.dev&quot;} {:command &quot;@base&quot;, :offset 5, :ns &quot;barsi.db.dev&quot;} {:command &quot;(def base (atom []))&quot;, :offset 20, :ns &quot;barsi.db.dev&quot;} {:command &quot;(ns barsi.helpers\n  (:require [cheshire.core :as j]))&quot;, :offset 53, :ns &quot;barsi.db.dev&quot;} {:command &quot;(convert-json-to-map \&quot;resource/item.json\&quot;)&quot;, :offset 42, :ns &quot;barsi.helpers&quot;} {:command &quot;(convert-json-to-map (slurp \&quot;resource/item.json\&quot;))&quot;, :offset 50, :ns &quot;barsi.helpers&quot;} {:command &quot;(slurp \&quot;resource/item.json\&quot;)&quot;, :offset 28, :ns &quot;barsi.helpers&quot;} {:command &quot;(read-string (slurp \&quot;resource/item.json\&quot;))&quot;, :offset 42, :ns &quot;barsi.helpers&quot;} {:command &quot;(read-string (slurp \&quot;item.json\&quot;))&quot;, :offset 33, :ns &quot;barsi.helpers&quot;} {:command &quot;(read-string (slurp \&quot;resources/item.json\&quot;))&quot;, :offset 43, :ns &quot;barsi.helpers&quot;} {:command &quot;(read-string (slurp \&quot;items.json\&quot;))&quot;, :offset 34, :ns &quot;barsi.helpers&quot;} {:command &quot;(slurp \&quot;resources/item.json\&quot;)&quot;, :offset 29, :ns &quot;barsi.helpers&quot;} {:command &quot;(convert-json-to-map (slurp \&quot;resources/item.json\&quot;))&quot;, :offset 51, :ns &quot;barsi.helpers&quot;} {:command &quot;base&quot;, :offset 4, :ns &quot;barsi.db.dev&quot;} {:command &quot;(ns barsi.db.dev\n  (:require [clojure.pprint :refer [pprint]]))&quot;, :offset 63, :ns &quot;barsi.server&quot;} {:command &quot;(pprint base)&quot;, :offset 13, :ns &quot;barsi.db.dev&quot;} {:command &quot;*e&quot;, :offset 2, :ns &quot;barsi.db.dev&quot;} {:command &quot;e*&quot;, :offset 2, :ns &quot;barsi.db.dev&quot;} {:command &quot;(ns barsi.server\n  (:gen-class)\n  (:require [io.pedestal.http :as server]\n            [io.pedestal.http.route :as route]\n            [barsi.diplomat.http-server :as http-server]))&quot;, :offset 179, :ns &quot;barsi.core&quot;} {:command &quot;(defn run-dev\n  \&quot;The entry-point for 'lein run-dev'\&quot;\n  [&amp; args]\n  (println \&quot;\\nCreating your [DEV] server...\&quot;)\n  (-&gt; http-server/service-map                               ;; start with production configuration\n      (merge {:env                     :dev\n              ;; do not block thread that starts web server\n              ::server/join?           false\n              ;; Routes can be a function that resolve routes,\n              ;;  we can use this to set the routes to be reloadable\n              ::server/routes          #(route/expand-routes (deref #'http-server/routes))\n              ;; all origins are allowed in dev mode\n              ::server/allowed-origins {:creds true :allowed-origins (constantly true)}})\n      ;; Wire up interceptor chains\n      server/default-interceptors\n      server/dev-interceptors\n      server/create-server\n      server/start))&quot;, :offset 871, :ns &quot;barsi.server&quot;} {:command &quot;(run-dev)&quot;, :offset 9, :ns &quot;barsi.server&quot;}], :remote []}}</component>
+  <component name="RunManager">
+    <configuration default="true" type="Babashka" factoryName="BabashkaLocalRepl" activateToolWindowBeforeRun="false">
+      <setting name="displayName" value="" />
+      <setting name="bbPath" value="" />
+      <setting name="parameters" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <setting name="workingDir" value="" />
+      <setting name="focusEditor" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="REPL for barsi" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false" temporary="true">
+      <option name="configVersion" value="1" />
+      <option name="displayName" value="REPL for barsi" />
+      <option name="execution" value="LEININGEN" />
+      <module name="barsi" />
+      <option name="options" />
+      <option name="profiles" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
+      <option name="configVersion" value="1" />
+      <option name="execution" value="LEININGEN" />
+      <option name="options" />
+      <option name="profiles" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="ClojureREPL" factoryName="Remote" activateToolWindowBeforeRun="false">
+      <setting name="displayName" value="" />
+      <setting name="host" value="" />
+      <setting name="port" value="0" />
+      <setting name="replType" value="SOCKET" />
+      <setting name="configType" value="SPECIFY" />
+      <setting name="replPortFileType" value="STANDARD" />
+      <setting name="customPortFile" value="" />
+      <setting name="fixLineNumbers" value="false" />
+      <setting name="focusEditor" value="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Clojure REPL.REPL for barsi" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9f3d3571-eda7-413b-a1b1-bbe053d17c28" name="Changes" comment="" />
+      <created>1680200940661</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680200940661</updated>
+    </task>
+    <servers />
+  </component>
+</project>

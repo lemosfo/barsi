@@ -3,6 +3,8 @@
 
 (def base (atom []))
 
+(def db-test (atom {:car :test
+                    :airplane :test}))
 (defn insert-in-db [db function request]
   (swap! db function request))
 
