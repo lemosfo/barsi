@@ -1,5 +1,4 @@
-(ns barsi.db.dev
-  (:require [clojure.pprint :refer [pprint]]))
+(ns barsi.db.dev)
 
 (def base (atom []))
 
