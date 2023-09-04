@@ -23,10 +23,6 @@
   (stop-server)
   (start-server))
 
-(defn reset-server []
-  (stop-server)
-  (start-server))
-
 (defn run-dev
   "The entry-point for 'lein run-dev'"
   [& args]

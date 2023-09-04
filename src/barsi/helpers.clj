@@ -8,8 +8,8 @@
 
 (defn convert-map-to-json
   "Function to convert a map in a json"
-  [return]
-  (j/generate-string return))
+  [json]
+  (j/generate-string json))
 
 
 ;(defn format-string-to-date

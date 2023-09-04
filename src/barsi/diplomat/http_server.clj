@@ -1,15 +1,11 @@
 (ns barsi.diplomat.http-server
-  (:require [io.pedestal.http :as http]
-            [barsi.logic.financial-calculates :as financial-calculates]
-            [io.pedestal.test :as test]
-            [barsi.db.dev :as db.dev]
-            [barsi.helpers :as helpers]))
+  (:require [io.pedestal.http :as http]))
 
 (defn- ping [_]
   {:status 200
    :body   (str "Pong")})
 
-(defn- list-items [_]
+(defn- list-item [_]
   ;(db.dev/insert-in-db db.dev/base conj body)
   {:status 200
    :body   (str "items-update")})
@@ -28,9 +24,9 @@
      ping
      :route-name :ping]
 
-    ["/api/list-items"
+    ["/api/list-item"
      :get
-     list-items
+     list-item
      :route-name :list-item]
 
     ["/api/create-item"
