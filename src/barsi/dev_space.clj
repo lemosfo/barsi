@@ -1,6 +1,14 @@
 (ns barsi.dev-space
   (:require [barsi.db.dev :as db])
-  (:require [clojure.pprint :refer [pprint]]))
+  (:require [clojure.pprint :refer [pprint]]
+            [clj-http.client :as http-client]))
+
+(defn consult-my-position [])
+
+(http-client/get "http://google.com"
+                 {:save-request? true
+                  :debug true
+                  :headers {:content-type "application/x-www-form-urlencoded"}})
 
 (defn print-atom [atom]
   (pprint atom))
