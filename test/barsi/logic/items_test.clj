@@ -1,4 +1,4 @@
-(ns barsi.logic.items-test
+(ns barsi.cash-flow-test
   (:require [clojure.test :refer :all]))
 
 (def input {:transaction-id {:date        "yyyy-mm-dd-mm:hh"
