@@ -1,12 +1,12 @@
 (ns barsi.helpers
   (:require [cheshire.core :as j]))
 
-(defn convert-json-to-map
+(defn json->map
   "Function to convert a json in a map"
   [json]
   (j/parse-string json true))
 
-(defn convert-map-to-json
+(defn map->json
   "Function to convert a map in a json"
   [json]
   (j/generate-string json))
