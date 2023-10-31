@@ -7,3 +7,6 @@
   (->> input
        (json/json->map)
        (db/insert-in-db db/base conj)))
+
+(defn get-register-financial [parameter value]
+  (filter #(= (parameter value) %) db/base))
