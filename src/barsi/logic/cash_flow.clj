@@ -9,4 +9,4 @@
        (db/insert-in-db db/base conj)))
 
 (defn get-register-financial [parameter value]
-  (filter #(= (:id %) value) db/base))
+  (filter #(= (parameter %) value) @db/base))

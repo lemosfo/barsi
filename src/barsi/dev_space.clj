@@ -11,7 +11,7 @@
 \"amount\":3000.0,
 \"account\":\"Nubank\",
 \"transaction\":\"Mercado Livre\",
-\"id\":\"12345\",
+\"id\":\"123456\",
 \"flags\":[\"Eletronics\",
 \"Free\"]}")
 
@@ -20,14 +20,24 @@
 (defn print-atom [atom]
   (pprint atom))
 
-(sub/get-register-financial :id 12345)
+(sub/get-register-financial :id "123456")
 
 (print-atom db/base)
 
+(defn filter-by-id [data-to-filter id-to-match]
+  (filter #(= id-to-match (:id %)) data-to-filter))
+
+(def filtered-data (filter-by-id data "12345"))
 
 
+(def fake-atom [{:a 12 :id 22} {:a 13 :id 33} {:a 16 :id 44}])
 
+(pprint fake-atom)
 
+(defn get-register-financial [parameter value]
+  (filter #(= (:id %) value) fake-atom))
+
+(get-register-financial :id 33)
 
 
 
