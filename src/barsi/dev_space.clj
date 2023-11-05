@@ -1,28 +1,29 @@
 (ns barsi.dev-space
-  (:require [barsi.db.dev :as db])
-  (:require [clojure.pprint :refer [pprint]]
-            [clj-http.client :as http-client]))
+  (:require [barsi.db.dev :as db]
+            [barsi.helpers :as json]
+            [clojure.pprint :refer [pprint]]
+            [barsi.logic.cash-flow :as sub]
+            [barsi.helpers :as json]))
 
-(defn consult-my-position [])
+(def input
+  "{\"description\":\"Apple Watch\",
+\"date\":\"2023-08-29\",
+\"amount\":3000.0,
+\"account\":\"Nubank\",
+\"transaction\":\"Mercado Livre\",
+\"id\":\"12345\",
+\"flags\":[\"Eletronics\",
+\"Free\"]}")
 
-(http-client/get "http://google.com"
-                 {:save-request? true
-                  :debug true
-                  :headers {:content-type "application/x-www-form-urlencoded"}})
+(sub/register-financial-input input)
 
 (defn print-atom [atom]
   (pprint atom))
 
-(defn insert-value [atom value]
-  reset! atom value)
+(sub/get-register-financial :id 12345)
 
-(print-atom db/db-test)
 (print-atom db/base)
 
-(db/insert-in-db db/base conj 10)
-
-(insert-value db/base 10)
-(pprint db/base)
 
 
 
