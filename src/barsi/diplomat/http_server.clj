@@ -1,5 +1,6 @@
 (ns barsi.diplomat.http-server
-  (:require [io.pedestal.http :as http]))
+  (:require [io.pedestal.http :as http]
+            [barsi.db.dev :as db]))
 
 (defn- ping [_]
   {:status 200
@@ -19,17 +20,17 @@
 
 (def routes
   ; (route/expand-routes
-  #{["/api/ping"
+  #{["/ping"
      :get
      ping
      :route-name :ping]
 
-    ["/api/list-item"
+    ["/list-item"
      :get
      list-item
      :route-name :list-item]
 
-    ["/api/create-item"
+    ["/create-item"
      :post
      create-item
      :route-name :create-item]})

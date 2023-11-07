@@ -9,6 +9,7 @@
 \"account\":\"Nubank\",
 \"transaction\":\"Mercado Livre\",
 \"id\":\"123456\",
+\"account-id\":\"1\",
 \"type\":\"Deposit\",
 \"flags\":[\"Eletronics\",\"Free\"]}")
 
@@ -20,6 +21,7 @@
 \"type\":\"Withdrawal\",
 \"transaction\":\"Mercado Livre\",
 \"id\":\"123\",
+\"account-id\":\"1\",
 \"flags\":[\"Eletronics\",\"Free\"]}")
 
 (deftest register-financial-input-test
@@ -32,6 +34,7 @@
                                                        :type        "Deposit"
                                                        :transaction "Mercado Livre"
                                                        :id          "123456"
+                                                       :account-id  "1"
                                                        :flags       ["Eletronics" "Free"]}]))))
 
 (deftest get-register-financial-test
@@ -43,6 +46,7 @@
                                                             :amount      5000.25
                                                             :account     "Wallet"
                                                             :type        "Withdrawal"
+                                                            :account-id  "1"
                                                             :transaction "Mercado Livre"
                                                             :id          "123"
                                                             :flags       ["Eletronics" "Free"]}])))
@@ -51,6 +55,7 @@
                                                                      :date        "2023-10-31"
                                                                      :amount      5000.25
                                                                      :account     "Wallet"
+                                                                     :account-id  "1"
                                                                      :type        "Withdrawal"
                                                                      :transaction "Mercado Livre"
                                                                      :id          "123"
