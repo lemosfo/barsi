@@ -1,15 +1,16 @@
 (ns barsi.diplomat.http-server
   (:require [io.pedestal.http :as http]
-            [barsi.db.dev :as db]))
+            [barsi.db.dev :as db]
+            [barsi.logic.cash-flow :as cash-flow]))
 
 (defn- ping [_]
   {:status 200
    :body   (str "Pong")})
 
-(defn- list-item [_]
+(defn- list-item [parameter id]
   ;(db.dev/insert-in-db db.dev/base conj body)
   {:status 200
-   :body   (str "items-update")})
+   :body   (cash-flow/get-register-financial parameter id)})
 
 (defn- create-item [_]
   {:status 201
