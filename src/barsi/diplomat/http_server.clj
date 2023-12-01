@@ -7,10 +7,13 @@
   {:status 200
    :body   (str "Pong")})
 
-(defn- list-item [parameter id]
+(defn- list-item [request]
   ;(db.dev/insert-in-db db.dev/base conj body)
-  {:status 200
-   :body   (cash-flow/get-register-financial parameter id)})
+  #_(let [params (:params request)
+        parameter (:parameter params)
+        id (:id params)])
+    {:status 200
+     :body   (cash-flow/get-register-financial :id 123)})
 
 (defn- create-item [_]
   {:status 201
@@ -28,6 +31,7 @@
 
     ["/list-item"
      :get
+     #_(list-item {:parameters [:parameter :id]})
      list-item
      :route-name :list-item]
 
