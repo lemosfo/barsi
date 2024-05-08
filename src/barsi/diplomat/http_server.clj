@@ -8,17 +8,18 @@
    :body   (str "Pong")})
 
 (defn- list-item [request]
-  ;(db.dev/insert-in-db db.dev/base conj body)
-  #_(let [params (:params request)
-          parameter (:parameter params)
-          id (:id params)])
-  {:status 200
-   :body   (cash-flow/get-register-financial :id 123)})
+  (let [params (:params request)
+        id (-> params :parameters :id)]
+    ;(db.dev/insert-in-db db.dev/base conj body)
+    {:status 200
+     :headers {"Content-Type" "application/json"}
+     :body   (cash-flow/get-register-financial :id id)}))
 
 (defn- create-item [request]
   (let [body (slurp (:body request))
         data (helpers/json->map body)]
     (http/json-response {:status 201
+                         :headers {"Content-Type" "application/json"}
                          :body   (str "created:" request)
                          #_(cash-flow/register-financial-input body)})))
 
