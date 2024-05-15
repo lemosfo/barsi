@@ -1,7 +1,9 @@
 (ns barsi.diplomat.http-server
   (:require [io.pedestal.http :as http]
+            [io.pedestal.http.body-params :as body-params]
             [barsi.logic.cash-flow :as cash-flow]
-            [barsi.helpers :as helpers]))
+            [barsi.helpers :as helpers]
+            [cheshire.core :as json]))
 
 (defn- ping [_]
   {:status 200
@@ -11,17 +13,16 @@
   (let [params (:params request)
         id (-> params :parameters :id)]
     ;(db.dev/insert-in-db db.dev/base conj body)
-    {:status 200
+    {:status  200
      :headers {"Content-Type" "application/json"}
-     :body   (cash-flow/get-register-financial :id id)}))
+     :body    (cash-flow/get-register-financial :id id)}))
 
 (defn- create-item [request]
-  (let [body (slurp (:body request))
-        data (helpers/json->map body)]
-    (http/json-response {:status 201
+  (let [body (:body request)]
+    (cash-flow/register-financial-input (json/parse-string body))
+    (http/json-response {:status  201
                          :headers {"Content-Type" "application/json"}
-                         :body   (str "created:" request)
-                         #_(cash-flow/register-financial-input body)})))
+                         :body    (json/generate-string {:message "Resource created successfully"})})))
 
 (def common-interceptors
   [])
