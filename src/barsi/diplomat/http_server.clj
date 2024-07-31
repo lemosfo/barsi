@@ -19,10 +19,12 @@
 
 (defn- create-item [request]
   (let [body (:body request)]
-    (cash-flow/register-financial-input (json/parse-string body))
     (http/json-response {:status  201
                          :headers {"Content-Type" "application/json"}
                          :body    (json/generate-string {:message "Resource created successfully"})})))
+
+#_(cash-flow/register-financial-input (json/parse-string body))
+
 
 (def common-interceptors
   [])
