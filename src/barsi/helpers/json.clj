@@ -1,4 +1,4 @@
-(ns barsi.helpers
+(ns barsi.helpers.json
   (:require [cheshire.core :as j]))
 
 (defn json->map
