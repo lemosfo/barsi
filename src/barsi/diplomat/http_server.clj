@@ -3,7 +3,10 @@
             [barsi.db.dev :as db]
             [barsi.helpers.debbug :as debbug]
             [clojure.pprint :as p]
-            [io.pedestal.http :as http]))
+            [io.pedestal.http :as http]
+            [io.pedestal.http.body-params :as body-params]
+            [clojure.data.json :as json]
+            [io.pedestal.http.content-negotiation :as content-negotiation]))
 
 (defonce database (atom {}))
 
@@ -24,10 +27,35 @@
     (catch Exception e
       {:status 500
        :body   (j/map->json {:message "Failed to save item"
-                                          :error   (.getMessage e)})})))
+                             :error   (.getMessage e)})})))
 
 (def common-interceptors
   [])
+
+(def supported-types ["text/html"
+                      "application/edn"
+                      "application/json"
+                      "text/plain"])
+
+(def content-negotiation-interceptor
+  (content-negotiation/negotiate-content supported-types))
+
+(def coerce-body-interceptor
+  {:name ::coerce-body
+   :leave
+   (fn [context]
+     (let [accepted (get-in context [:request :accept :field] "text/plain")
+           response (get context :response)
+           body (get response :body)
+           coerced-body (case accepted
+                          "text/html" body
+                          "text/plain" body
+                          "application/edn" (pr-str body)
+                          "application/json" (json/write-str body))
+           updated-response (assoc response
+                              :headers {"Content-Type" accepted}
+                              :body coerced-body)]
+       (assoc context :response updated-response)))})
 
 (def routes
   ; (route/expand-routes
@@ -43,7 +71,9 @@
 
     ["/api/create-item"
      :post
-     (fn [request] (create-item (:body (p/pprint request))))
+     (fn [request]
+       (let [item (:json-params request)]
+         (create-item item)))
      :route-name :create-item]})
 
 (def service-map {:env          :prod
