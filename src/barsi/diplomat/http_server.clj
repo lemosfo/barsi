@@ -6,7 +6,8 @@
             [io.pedestal.http :as http]
             [io.pedestal.http.body-params :as body-params]
             [clojure.data.json :as json]
-            [io.pedestal.http.content-negotiation :as content-negotiation]))
+            [io.pedestal.http.content-negotiation :as content-negotiation]
+            [ring.util.response :as ring-resp]))
 
 (defonce database (atom {}))
 
@@ -30,7 +31,13 @@
                              :error   (.getMessage e)})})))
 
 (def common-interceptors
-  [])
+  [(body-params/body-params)])
+
+(defn my-post-handler [request]
+  (let [body-data (:json-params request)]
+    ;; Process body-data here
+    (ring-resp/response (create-item body-data))))
+
 
 (def supported-types ["text/html"
                       "application/edn"
@@ -71,8 +78,9 @@
 
     ["/api/create-item"
      :post
-     (fn [request]
-       (let [item (:json-params request)]
+     (conj common-interceptors `my-post-handler)
+     #_(fn [request]
+       (let [item (:params request)]
          (create-item item)))
      :route-name :create-item]})
 
