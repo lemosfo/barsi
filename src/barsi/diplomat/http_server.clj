@@ -24,11 +24,11 @@
   (try
     ;(db/insert-in-db database conj item)
     {:status 201
-     :body   (j/map->json {:message "Item created successfully" :item item})}
+     :body   {:message "Item created successfully" :item (:item item)}}
     (catch Exception e
       {:status 500
-       :body   (j/map->json {:message "Failed to save item"
-                             :error   (.getMessage e)})})))
+       :body   {:message "Failed to save item"
+                :error   (.getMessage e)}})))
 
 (def common-interceptors
   [(body-params/body-params)])
@@ -36,7 +36,8 @@
 (defn my-post-handler [request]
   (let [body-data (:json-params request)]
     ;; Process body-data here
-    (ring-resp/response (create-item body-data))))
+    (-> (ring-resp/response (create-item body-data))
+        (ring-resp/content-type "application/json"))))
 
 
 (def supported-types ["text/html"
@@ -79,9 +80,6 @@
     ["/api/create-item"
      :post
      (conj common-interceptors `my-post-handler)
-     #_(fn [request]
-       (let [item (:params request)]
-         (create-item item)))
      :route-name :create-item]})
 
 (def service-map {:env          :prod
