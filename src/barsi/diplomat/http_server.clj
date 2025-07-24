@@ -11,16 +11,13 @@
   {:status 200
    :body   (str "Pong")})
 
-(-> (db/get-item database)
-    (json/map->json))
-
-(defn- list-item [input]
+(defn- list-item-handler [input]
   (let [filter-id (:id input)
         response {:status 200
                   :body   (db/get-item database)}]
     (try
       (-> response
-          (ring-resp/content-type "application/json"))
+          (json/map->json))
       (catch Exception e
         {:status 500
          :body   {:message "Failed to retrieve item"
@@ -43,9 +40,14 @@
 (def common-interceptors
   [(body-params/body-params)])
 
+(defn list-item [request]
+  (let [body-data (:json-params request)]
+    (-> (ring-resp/response (list-item-handler body-data))
+        (ring-resp/content-type "application/json"))))
+
 (defn create-new-item [request]
   (let [body-data (:json-params request)]
-    (-> (ring-resp/response (create-new-item-handler body-data))
+    (-> (ring-resp/created (create-new-item-handler body-data))
         (ring-resp/content-type "application/json"))))
 
 (def routes
