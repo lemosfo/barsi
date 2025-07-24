@@ -2,7 +2,8 @@
   (:require [barsi.db.dev :as db]
             [io.pedestal.http :as http]
             [io.pedestal.http.body-params :as body-params]
-            [ring.util.response :as ring-resp]))
+            [ring.util.response :as ring-resp]
+            [barsi.helpers.json :as json]))
 
 (defonce database (atom {}))
 
@@ -10,18 +11,30 @@
   {:status 200
    :body   (str "Pong")})
 
-(defn- list-item [_]
-  {:status 200
-   :body   (str "items-update")})
+(-> (db/get-item database)
+    (json/map->json))
 
-(defn create-item [input]
+(defn- list-item [input]
+  (let [filter-id (:id input)
+        response {:status 200
+                  :body   (db/get-item database)}]
+    (try
+      (-> response
+          (ring-resp/content-type "application/json"))
+      (catch Exception e
+        {:status 500
+         :body   {:message "Failed to retrieve item"
+                  :error   (.getMessage e)}}))))
+
+(defn create-new-item-handler [input]
   (let [transaction-id (random-uuid)
-        transaction (assoc input :id transaction-id)]
+        transaction (assoc input :id transaction-id)
+        response {:status 201
+                  :body   {:message "Your transaction was successfully registered"
+                           :id      transaction-id}}]
     (try
       (do (db/insert-in-db database conj transaction)
-          {:status 201
-           :body   {:message "Your transaction was successfully registered"
-                    :id      transaction-id}})
+          (json/map->json response))
       (catch Exception e
         {:status 500
          :body   {:message "Failed to save item"
@@ -30,9 +43,9 @@
 (def common-interceptors
   [(body-params/body-params)])
 
-(defn my-post-handler [request]
+(defn create-new-item [request]
   (let [body-data (:json-params request)]
-    (-> (ring-resp/response (create-item body-data))
+    (-> (ring-resp/response (create-new-item-handler body-data))
         (ring-resp/content-type "application/json"))))
 
 (def routes
@@ -48,7 +61,7 @@
 
     ["/api/create-item"
      :post
-     (conj common-interceptors `my-post-handler)
+     (conj common-interceptors `create-new-item)
      :route-name :create-item]})
 
 (def service-map {:env          :prod
