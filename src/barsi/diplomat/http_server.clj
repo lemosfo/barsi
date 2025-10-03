@@ -1,9 +1,11 @@
 (ns barsi.diplomat.http-server
   (:require [barsi.db.dev :as db]
+            [barsi.helpers.json :as json]
+            [barsi.wire.in.item :as w.in.item]
+            [schema.core :as s]
             [io.pedestal.http :as http]
             [io.pedestal.http.body-params :as body-params]
-            [ring.util.response :as ring-resp]
-            [barsi.helpers.json :as json]))
+            [ring.util.response :as ring-resp]))
 
 (defonce database (atom {}))
 
@@ -45,7 +47,8 @@
     (-> (ring-resp/response (list-item-handler body-data))
         (ring-resp/content-type "application/json"))))
 
-(defn create-new-item [request]
+(s/defn create-new-item
+  [request :- w.in.item/Item]
   (let [body-data (:json-params request)]
     (-> (ring-resp/created (create-new-item-handler body-data))
         (ring-resp/content-type "application/json"))))
