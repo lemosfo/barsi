@@ -11,7 +11,10 @@
                  [cheshire "5.11.0"]
                  [clj-http "3.9.1"]
                  [org.clojure/data.json "2.5.1"]
-                 [prismatic/schema "1.4.1"]]
+                 [prismatic/schema "1.4.1"]
+                 [ring/ring-core "1.15.3"]
+                 [ring/ring-jetty-adapter "1.15.3"]
+                 [compojure "1.7.2"]]
   :main ^{:skip-aot false} barsi.server
   :profiles {:dev     {:dependencies [[io.pedestal/pedestal.service-tools "0.5.11-beta-1"]
                                       [io.pedestal/pedestal.jetty "0.5.10"]]}
