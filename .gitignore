@@ -11,7 +11,9 @@ pom.xml.asc
 /.prepl-port
 .hgignore
 .hg/
-.idea/*
+.idea/*sss
 .calva
 .clj-kondo
 .lsp
+*.iml
+.idea/
