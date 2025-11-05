@@ -2,8 +2,8 @@
   (:require [schema.core :as s]))
 
 (s/defschema Item
-  "An input of financial item"
-  {(s/required-key :account) s/Int
-   (s/required-key :amount)  s/Num
-   :description s/Str
-   :tags [s/Str]})
+             "An input of financial item"
+             {:account                      s/Int
+              :amount                       s/Num
+              (s/optional-key :description) s/Str
+              (s/optional-key :tags)        [s/Str]})

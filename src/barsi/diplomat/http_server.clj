@@ -39,6 +39,22 @@
          :body   {:message "Failed to save item"
                   :error   (.getMessage e)}}))))
 
+(defn validate-schema [schema]
+  "Interceptor para validar o payload da requisição (:json-params) contra o schema fornecido."
+  {:name  ::validate-schema
+   :enter (fn [context]
+            (let [body-data   (get-in context [:request :json-params])
+                  validation-result (s/check schema body-data)]
+              (if (nil? validation-result)
+                ;; Schema válido, continua o processamento
+                context
+                ;; Schema inválido, interrompe o pipeline e retorna 400 Bad Request
+                (let [error-message {:message "Validation Failed"
+                                     :errors  validation-result}]
+                  (assoc context :response
+                                 (-> (ring-resp/bad-request (json/map->json error-message))
+                                     (ring-resp/content-type "application/json")))))))})
+
 (def common-interceptors
   [(body-params/body-params)])
 
@@ -66,7 +82,7 @@
 
     ["/api/create-item"
      :post
-     (conj common-interceptors `create-new-item)
+     (conj common-interceptors (validate-schema w.in.item/Item) `create-new-item)
      :route-name :create-item]})
 
 (def service-map {:env          :prod
