@@ -1,6 +1,6 @@
 (ns barsi.diplomat.http-server
   (:require [barsi.db.dev :as db]
-            [barsi.helpers.json :as json]
+            [barsi.helper.json :as json]
             [barsi.wire.in.item :as w.in.item]
             [schema.core :as s]
             [io.pedestal.http :as http]
@@ -43,12 +43,10 @@
   "Interceptor para validar o payload da requisição (:json-params) contra o schema fornecido."
   {:name  ::validate-schema
    :enter (fn [context]
-            (let [body-data   (get-in context [:request :json-params])
+            (let [body-data (get-in context [:request :json-params])
                   validation-result (s/check schema body-data)]
               (if (nil? validation-result)
-                ;; Schema válido, continua o processamento
                 context
-                ;; Schema inválido, interrompe o pipeline e retorna 400 Bad Request
                 (let [error-message {:message "Validation Failed"
                                      :errors  validation-result}]
                   (assoc context :response

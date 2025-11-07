@@ -7,6 +7,7 @@
   :dependencies [[org.clojure/clojure "1.12.2"]
                  [io.pedestal/pedestal.service "0.5.10"]
                  [io.pedestal/pedestal.immutant "0.5.10"]
+                 [io.pedestal/pedestal.jetty "0.5.10"]
                  [org.slf4j/slf4j-simple "2.0.3"]
                  [cheshire "5.11.0"]
                  [clj-http "3.9.1"]
@@ -14,9 +15,10 @@
                  [prismatic/schema "1.4.1"]
                  [ring/ring-core "1.15.3"]
                  [ring/ring-jetty-adapter "1.15.3"]
-                 [compojure "1.7.2"]]
+                 [ring/ring-devel "1.9.6"]
+                 [compojure "1.7.2"]
+                 [commons-io/commons-io "2.15.1"]]
   :main ^{:skip-aot false} barsi.server
-  :profiles {:dev     {:dependencies [[io.pedestal/pedestal.service-tools "0.5.11-beta-1"]
-                                      [io.pedestal/pedestal.jetty "0.5.10"]]}
+  :profiles {:dev     {:dependencies [[io.pedestal/pedestal.service-tools "0.5.11-beta-1"]]}
              :uberjar {:aot [barsi.server]}}
   :repl-options {:init-ns barsi.core})
